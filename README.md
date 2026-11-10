@@ -32,6 +32,7 @@ Build with `npm run build`. Regenerate the single-file demo with `npm run build:
 - Canvas shell with Study Chats as the course navigation item and Materials, Activity, and Results tabs.
 - Course selection and simulated automatic/manual sync of pages and files, with separate libraries for two sample business courses.
 - Search, source/type/date/module filters, sorting, list and grid views, and material previews.
+- Create course modules directly in Materials. Assign individual materials to one or several modules, or select materials for bulk assignment. Create a module inline while assigning, clear assignments, and filter by every assigned module. Modules persist per course and are available in uploads and Activity setup. Existing browser data retains its original assignments.
 - Multi-file uploads with drag-and-drop and a mirrored demo Canvas Files list.
 - Five-step document wizard: purpose, topics, document format/audience/length/tone, references, and review. Fields accept typed answers and sample AI suggestions.
 - Side-by-side Markdown editor and live rendered document preview on desktop; stacked panes on mobile. Headings, emphasis, links, lists, and tables render in both the draft preview and saved documents.
@@ -44,8 +45,8 @@ Canvas and AI integrations are simulated. Sync reads sample data and runs on cou
 
 Text, Markdown, and CSV uploads preserve text in local browser storage. Binary uploads retain metadata only; their original contents are not stored or downloadable. The preview download is a text representation, not the original file. Uploading mirrors entries only to the simulated Canvas Files list.
 
-Library metadata, text content, drafts, and activity links persist in localStorage in the current browser. They are not shared between users or devices. No live credentials are required. Instructor-only labels illustrate intended product behavior; this prototype has no authentication or authorization backend.
+Course modules, material assignments, library metadata, text content, drafts, and activity links persist in localStorage in the current browser. They are not shared between users or devices. No live credentials are required. Instructor-only labels illustrate intended product behavior; this prototype has no authentication or authorization backend.
 
 ## Validation
 
-Production build and browser checks cover search, the five-step wizard, saving drafts, uploading text files, the Files mirror, activity linking, persistence, course isolation, and mobile overflow.
+Module-specific checks cover creation, duplicates, individual and bulk assignments, multiple modules per material, filters, unassignment, cancellation, reload/sync persistence, course isolation, upload/activity choices, and mobile layout. Production build and browser checks also cover search, the five-step wizard, saving drafts, uploading text files, the Files mirror, activity linking, persistence, course isolation, and mobile overflow.
