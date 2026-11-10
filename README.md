@@ -32,8 +32,10 @@ Build with `npm run build`. Regenerate the single-file demo with `npm run build:
 - Canvas shell with Study Chats as the course navigation item and Materials, Activity, and Results tabs.
 - Course selection and simulated automatic/manual sync of pages and files, with separate libraries for two sample business courses.
 - Search, source/type/date/module filters, sorting, list and grid views, and material previews.
-- Create course modules directly in Materials. Assign individual materials to one or several modules, or select materials for bulk assignment. Create a module inline while assigning, clear assignments, and filter by every assigned module. Modules persist per course and are available in uploads and Activity setup. Existing browser data retains its original assignments.
-- Multi-file uploads with drag-and-drop and a mirrored demo Canvas Files list.
+- Create course modules directly in Materials. Start with a learning goal or selected materials; review suggested topic groups, titles, and goals before creating. Module titles display their automatic number, and empty titles explain why Create module is disabled. Drag handles and up/down controls reorder and renumber modules while stable identifiers preserve material and activity links. Edit module titles and goals later. Assign individual materials to one or several modules, or select materials for bulk assignment. Create a module inline while assigning, clear assignments, and filter by every assigned module. Modules persist per course and are available in uploads and Activity setup. Existing browser data retains its original assignments.
+- Multi-file uploads with drag-and-drop and a mirrored demo Canvas Files list. Readable imports get an editable summary excerpt, labeled as an AI draft in this demo. Each material has optional instructor context and learning goals; suggested goals require explicit acceptance. Unreadable binary files show Needs context instead of invented summaries or objectives.
+- Review organization suggestions against module goals. Each suggestion explains its match and offers Accept or Dismiss; accepted suggestions can add an assignment or explicitly replace existing assignments. No automatic moves occur.
+- Activity setup can reuse the selected module’s learning goal. Generated readings retain the learning goal entered in the document wizard.
 - Five-step document wizard: purpose, topics, document format/audience/length/tone, references, and review. Fields accept typed answers and sample AI suggestions.
 - Side-by-side Markdown editor and live rendered document preview on desktop; stacked panes on mobile. Headings, emphasis, links, lists, and tables render in both the draft preview and saved documents.
 - Editable generated draft saved to Materials. Draft activity creation and editing link selected materials to a course module in the Activity tab.
@@ -41,12 +43,14 @@ Build with `npm run build`. Regenerate the single-file demo with `npm run build:
 
 ## Prototype boundaries
 
-Canvas and AI integrations are simulated. Sync reads sample data and runs on course selection and app load, with a manual refresh option. No actual Canvas API, LTI installation, language model, student chat, publication, or analytics is connected. The document generator uses a template and selected source excerpts; it does not implement all format, length, or tone choices as a production model would.
+Canvas and AI integrations are simulated. Sync reads sample data and runs on course selection and app load, with a manual refresh option. No actual Canvas API, LTI installation, language model, student chat, publication, or analytics is connected. Goal/title suggestions and source grouping use deterministic keyword profiles, summaries are cleaned excerpts, and organization recommendations use keyword overlap against module goals. They illustrate the intended workflow rather than a live AI system. The document generator uses a template and selected source excerpts; it does not implement all format, length, or tone choices as a production model would.
 
 Text, Markdown, and CSV uploads preserve text in local browser storage. Binary uploads retain metadata only; their original contents are not stored or downloadable. The preview download is a text representation, not the original file. Uploading mirrors entries only to the simulated Canvas Files list.
 
 Course modules, material assignments, library metadata, text content, drafts, and activity links persist in localStorage in the current browser. They are not shared between users or devices. No live credentials are required. Instructor-only labels illustrate intended product behavior; this prototype has no authentication or authorization backend.
 
 ## Validation
+
+Run `npm test` for migration, stable identity, readable/unreadable metadata, source grouping, and placement regression checks. Browser checks additionally cover both module creation paths, optional goal review, explicit placement acceptance, disabled-button guidance, module reordering with linked materials/activities, persistence, and mobile layouts.
 
 Module-specific checks cover creation, duplicates, individual and bulk assignments, multiple modules per material, filters, unassignment, cancellation, reload/sync persistence, course isolation, upload/activity choices, and mobile layout. Production build and browser checks also cover search, the five-step wizard, saving drafts, uploading text files, the Files mirror, activity linking, persistence, course isolation, and mobile overflow.
