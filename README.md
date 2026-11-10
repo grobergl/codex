@@ -13,7 +13,7 @@ npm install
 npm run dev
 ```
 
-Build with `npm run build`. The development server uses port 5173 by default.
+Build with `npm run build`. Regenerate the single-file demo with `npm run build:standalone`. The development server uses port 5173 by default.
 
 ## Included flows
 
@@ -22,6 +22,7 @@ Build with `npm run build`. The development server uses port 5173 by default.
 - Search, source/type/date/module filters, sorting, list and grid views, and material previews.
 - Multi-file uploads with drag-and-drop and a mirrored demo Canvas Files list.
 - Five-step document wizard: purpose, topics, document format/audience/length/tone, references, and review. Fields accept typed answers and sample AI suggestions.
+- Side-by-side Markdown editor and live rendered document preview on desktop; stacked panes on mobile. Headings, emphasis, links, lists, and tables render in both the draft preview and saved documents.
 - Editable generated draft saved to Materials. Draft activity creation and editing link selected materials to a course module in the Activity tab.
 - Results placeholder. Responsive layouts and browser-local persistence.
 
