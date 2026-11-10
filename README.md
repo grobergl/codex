@@ -6,6 +6,18 @@ Interactive instructor mockup of Study Chats embedded in Canvas, using a sample 
 
 Open `study-chats.html` directly in a modern browser. No installation or server is required. Download the repository ZIP and extract it first. The HTML file contains the entire app; optional web fonts need an internet connection.
 
+## Team preview
+
+The preview is prepared for GitHub Pages at https://grobergl.github.io/codex/ . The repository owner must first enable Pages in Settings → Pages → Deploy from a branch → `gh-pages` → `/ (root)` → Save. The GitHub connection used to build this mockup lacks permission to enable Pages (HTTP 403).
+
+The `gh-pages` branch contains a self-contained `index.html` and `.nojekyll`. To update an enabled preview, regenerate `study-chats.html` with `npm run build:standalone`, copy it to `index.html` on `gh-pages`, and push that branch. The public preview uses sample content; each browser maintains its own local drafts and library changes.
+
+## Document preview
+
+The AI draft editor and its rendered reading are shown side by side on desktop, with a live preview as you type. On mobile, the panels stack vertically.
+
+![Side-by-side document editor and rendered preview](docs/document-preview.png)
+
 ## Develop
 
 ```sh
