@@ -49,3 +49,11 @@ test('placement recommendations are read-only, use module goals, and skip curren
  assert.deepEqual(i.moduleIds,[]);
  assert.deepEqual(placementSuggestions([{...i,moduleIds:[records[1].id]}],records),[]);
 });
+
+
+test('instructor-provided context can ground suggestions for an unreadable file',()=>{
+ const item={id:'binary',title:'Scanned handout',content:'Uploaded file: scan.pdf. Binary file preview is unavailable in this mockup.',moduleIds:[],context:'Use customer interviews and segmentation to compare target market needs.'};
+ assert.match(goalFor(item),/customer research/i);
+ assert.equal(groupMaterials([item])[0].items[0].id,'binary');
+ assert.equal(placementSuggestions([item],setup()['Course A']).length,1);
+});
