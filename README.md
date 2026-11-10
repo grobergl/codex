@@ -8,9 +8,9 @@ Open `study-chats.html` directly in a modern browser. No installation or server 
 
 ## Team preview
 
-Open and share the live preview: https://grobergl.github.io/codex/ . GitHub Pages is enabled and deploys from the `gh-pages` branch at `/ (root)`. No download or GitHub login is required.
+Open and share the live preview: https://grobergl.github.io/codex/ . GitHub Pages is enabled and deploys from the `gh-pages` branch at `/docs`. No download or GitHub login is required.
 
-The `gh-pages` branch contains a self-contained `index.html` and `.nojekyll`. To update an enabled preview, regenerate `study-chats.html` with `npm run build:standalone`, copy it to `index.html` on `gh-pages`, and push that branch. The public preview uses sample content; each browser maintains its own local drafts and library changes.
+The `gh-pages` branch contains a self-contained `docs/index.html` and `docs/.nojekyll`, matching the current Pages source folder. A root copy is also kept. To update an enabled preview, regenerate `study-chats.html` with `npm run build:standalone`, copy it to both `docs/index.html` and `index.html` on `gh-pages`, and push that branch. The public preview uses sample content; each browser maintains its own local drafts and library changes.
 
 ## Document preview
 
