@@ -1,6 +1,6 @@
-# Study Chats · Materials
+# AI Study Chats · Daalaa
 
-Interactive instructor mockup of Study Chats embedded in Canvas, using a sample business course.
+Interactive instructor mockup of AI Study Chats embedded in Canvas, using a sample business course.
 
 ## Open the mockup
 
@@ -29,7 +29,12 @@ Build with `npm run build`. Regenerate the single-file demo with `npm run build:
 
 ## Included flows
 
-- Canvas shell with Study Chats as the course navigation item and Materials, Activity, and Results tabs.
+- Canvas shell with AI Study Chats as the course navigation item. Tabs are Activities, Materials, Results, AI Models, Preferences, and About Daalaa, in that order. About Daalaa opens on a first visit; the last tab is then remembered in the current browser.
+- About Daalaa provides a welcome screen, written Materials tutorials, and entry points into the existing reading and module wizards.
+- Activities preserves saved drafts and the draft form, with a guided-setup preview outlining format, context, and completion choices.
+- Results sketches live conversations and grade review, concept understanding, debate patterns, and AI usage. No student data or usage statistics are populated.
+- AI Models sketches available-model slots and disabled API-key setup fields, with a working shortcut to the AI usage area in Results. No model is connected and no key is collected or stored.
+- Preferences shows illustrative defaults for summaries, optional learning goals, reviewed material placement, and activity completion by time or turns. These proposed defaults are disabled previews. The existing course connection dialog remains available from Preferences and Materials.
 - Course selection and simulated automatic/manual sync of pages and files, with separate libraries for two sample business courses.
 - Search, source/type/date/module filters, sorting, list and grid views, and material previews.
 - Create course modules directly in Materials. Creation uses a three-step wizard: choose a starting point, build the module plan, then review and create. Goal-first entry carries the typed goal forward and always shows the full course library. Suggested matches appear first with badges and explanations; instructors explicitly check the materials they want. A prominent Suggest matches action never changes those selections. Search and module/type filters preserve selection across views, and both the library and sticky wizard navigation show the selected count. No-match guidance keeps the library available, and the list scrolls within the wizard. Material-first entry lets instructors choose sources or a suggested group, then reviews a proposed learning goal derived from that selection. Title, goal, and chosen readings appear together at final review; nothing is saved until Create module. Back navigation preserves edits. Goals and readings can be left for later, and material assignment is an explicit final-review choice. Existing modules retain a direct edit form. Module titles display their automatic number, and empty titles explain why Create module is disabled. Drag handles and up/down controls reorder and renumber modules while stable identifiers preserve material and activity links. Edit module titles and goals later. Assign individual materials to one or several modules, or select materials for bulk assignment. Create a module inline while assigning, clear assignments, and filter by every assigned module. Modules persist per course and are available in uploads and Activity setup. Existing browser data retains its original assignments.
@@ -39,7 +44,7 @@ Build with `npm run build`. Regenerate the single-file demo with `npm run build:
 - Five-step document wizard: purpose, topics, document format/audience/length/tone, references, and review. Fields accept typed answers and sample AI suggestions.
 - Side-by-side Markdown editor and live rendered document preview on desktop; stacked panes on mobile. Headings, emphasis, links, lists, and tables render in both the draft preview and saved documents.
 - Editable generated draft saved to Materials. Draft activity creation and editing link selected materials to a course module in the Activity tab.
-- Results placeholder. Responsive layouts and browser-local persistence.
+- Responsive layouts, horizontally scrollable app tabs on smaller screens, and browser-local persistence.
 
 ## Prototype boundaries
 
@@ -50,6 +55,8 @@ Text, Markdown, and CSV uploads preserve text in local browser storage. Binary u
 Course modules, material assignments, library metadata, text content, drafts, and activity links persist in localStorage in the current browser. They are not shared between users or devices. No live credentials are required. Instructor-only labels illustrate intended product behavior; this prototype has no authentication or authorization backend.
 
 ## Validation
+
+Navigation checks cover exact branding/tab order, first-visit welcome, remembered tabs, written guides and wizard entry points, the AI usage shortcut, empty Results/model/key layouts, activity drafts, Preferences course connection, and mobile navigation.
 
 Run `npm test` for migration, stable identity, readable/unreadable metadata, source grouping, and placement regression checks. Library browser checks cover no-match visibility, suggested-first ranking/badges/reasons, explicit selections, search and combined module/type filters, reset behavior, selection retention through filtering and back navigation, updated goals, mobile actions/sticky navigation, and final assignments. Browser checks additionally cover all three creation steps, distinct goal/material paths, explained reading matches, proposed source-grounded goals, back/edit preservation, final-review-only creation, assignment opt-out, duplicate and empty titles, cancellation, optional goal review, explicit placement acceptance, disabled-button guidance, module reordering with linked materials/activities, persistence, and mobile layouts.
 
