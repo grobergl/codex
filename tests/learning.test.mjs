@@ -57,3 +57,13 @@ test('instructor-provided context can ground suggestions for an unreadable file'
  assert.equal(groupMaterials([item])[0].items[0].id,'binary');
  assert.equal(placementSuggestions([item],setup()['Course A']).length,1);
 });
+
+test('goal-first material suggestions explain matches without requiring material objectives',async()=>{
+ const {materialsForGoal}=await import('../src/learning.js');
+ const items=[{id:'customer',title:'Customer research guide',content:'Interview customers and compare market segments.',learningGoals:[]},{id:'teams',title:'Team leadership',content:'Leading teams through organizational change.'},{id:'binary',title:'Customer strategy',content:'Uploaded file: customer.pdf. Binary file preview is unavailable in this mockup.'}];
+ const suggestions=materialsForGoal(items,'Use customer research to compare market segments.');
+ assert.deepEqual(suggestions.map(s=>s.item.id),['customer']);
+ assert.match(suggestions[0].reason,/research|customer|market/);
+ assert.deepEqual(items[0].learningGoals,[]);
+ assert.deepEqual(materialsForGoal(items,''),[]);
+});

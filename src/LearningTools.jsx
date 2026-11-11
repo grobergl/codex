@@ -1,8 +1,11 @@
 import React,{useState} from 'react';
+import ModuleWizard from './ModuleWizard';
 import {Sparkles,Plus,FolderOpen,ArrowUp,ArrowDown,GripVertical,Check,FileText,X} from 'lucide-react';
 import {stripNumber,titleForGoal,groupMaterials,goalFor,readable,placementSuggestions,moduleName,topicFor} from './learning';
 
-export function ModuleBuilder({records,items,onSave,onCancel,initial=null}){
+export function ModuleBuilder(props){return props.initial?<ModuleEditor {...props}/>:<ModuleWizard {...props}/>;}
+
+function ModuleEditor({records,items,onSave,onCancel,initial=null}){
  const [path,setPath]=useState('goal'),[goal,setGoal]=useState(initial?.goal||''),[title,setTitle]=useState(initial?.title||''),[refs,setRefs]=useState([]),[scope,setScope]=useState('unassigned'),[groups,setGroups]=useState(null),[error,setError]=useState(''),[suggested,setSuggested]=useState(false),[assign,setAssign]=useState(true);
  const candidates=scope==='unassigned'?items.filter(i=>!i.moduleIds.length):items;
  const number=initial?records.findIndex(r=>r.id===initial.id)+1:records.length+1;
