@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import {Sparkles,Search,FileText,FolderOpen,Filter,X,CheckCircle2} from 'lucide-react';
 import {moduleName} from './learning';
 
-export default function GoalMaterialLibrary({items,records,matches,selectedIds,onToggle,goal}){
+export default function GoalMaterialLibrary({items,records,matches,selectedIds,onToggle,goal,onSuggestMatches}){
  const [query,setQuery]=useState(''),[moduleFilter,setModuleFilter]=useState('all'),[typeFilter,setTypeFilter]=useState('all'),[requestedGoal,setRequestedGoal]=useState(null);
  const suggestionNotice=requestedGoal===goal?(matches.length?`${matches.length} suggested match${matches.length===1?'':'es'} marked below. Choose which materials to include; your selections haven’t changed.`:'No suggested matches yet. Choose from your course materials below, or continue without materials.'):'';
  const matchById=new Map(matches.map(match=>[match.item.id,match]));
@@ -11,7 +11,7 @@ export default function GoalMaterialLibrary({items,records,matches,selectedIds,o
  const filtered=items.filter(item=>(!query.trim()||`${item.title} ${item.summary||''} ${item.content||''} ${item.context||''} ${(item.learningGoals||[]).join(' ')}`.toLowerCase().includes(query.trim().toLowerCase()))&&(moduleFilter==='all'||(moduleFilter==='unassigned'?!item.moduleIds.length:item.moduleIds.includes(moduleFilter)))&&(typeFilter==='all'||item.type===typeFilter)).sort((a,b)=>(matchById.get(b.id)?.score||0)-(matchById.get(a.id)?.score||0));
  const resetFilters=()=>{setQuery('');setModuleFilter('all');setTypeFilter('all');};
  return <section className="plan-materials goal-material-library" role="group" aria-label="Course material library">
- <div className="goal-library-heading"><div><h4>Course materials</h4><span className="library-selected-count" aria-live="polite"><CheckCircle2 size={14}/>{selectedCount} selected</span></div><button type="button" className="button suggest-matches-button" disabled={!goal.trim()||!items.length} onClick={()=>setRequestedGoal(goal)}><Sparkles size={16}/>Suggest matches</button></div>
+ <div className="goal-library-heading"><div><h4>Course materials</h4><span className="library-selected-count" aria-live="polite"><CheckCircle2 size={14}/>{selectedCount} selected</span></div><button type="button" className="button suggest-matches-button" disabled={!goal.trim()||!items.length} onClick={()=>{if(onSuggestMatches?.()!==false)setRequestedGoal(goal)}}><Sparkles size={16}/>Suggest matches</button></div>
  <p className="goal-library-help">All course materials are listed below. Suggested matches appear first, with a reason. Check the materials you want to include.{!goal.trim()&&' Add a learning goal to enable suggestions.'}</p>
  {!items.length?<p className="wizard-notice">No materials in this course yet. You can continue and add materials later.</p>:!matches.length&&!suggestionNotice&&<p className="wizard-notice no-match-guidance">No suggested matches yet. Choose from your course materials below, or continue without materials.</p>}
  {suggestionNotice&&<p className="goal-match-notice" role="status">{suggestionNotice}</p>}
