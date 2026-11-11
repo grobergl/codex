@@ -1,0 +1,10 @@
+import {readFile,writeFile} from 'node:fs/promises';
+const html=await readFile('dist/index.html','utf8');
+const script=html.match(/<script type="module"[^>]*src="([^"]+)"[^>]*><\/script>/);
+const stylesheet=html.match(/<link rel="stylesheet"[^>]*href="([^"]+)"[^>]*>/);
+if(!script||!stylesheet)throw new Error('Expected one Vite entry script and stylesheet');
+const js=await readFile(`dist${script[1]}`,'utf8');
+const css=await readFile(`dist${stylesheet[1]}`,'utf8');
+const standalone=html.replace(script[0],()=>`<script type="module">${js.replaceAll('</script','<\\/script')}</script>`).replace(stylesheet[0],()=>`<style>${css}</style>`);
+await writeFile('study-chats.html',standalone);
+console.log('Built study-chats.html');
