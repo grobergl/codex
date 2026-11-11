@@ -29,7 +29,7 @@ Build with `npm run build`. Regenerate the single-file demo with `npm run build:
 
 ## Included flows
 
-- Canvas shell with AI Study Chats as the course navigation item. Tabs are Activities, Materials, Results, AI Models, Preferences, and About Daalaa, in that order. About Daalaa opens on a first visit; the last tab is then remembered in the current browser.
+- Canvas shell with AI Study Chats as the course navigation item. Tabs are Materials, Activities, Results, AI Models, Preferences, and About Daalaa, in that order. About Daalaa opens on a first visit; the last tab is then remembered in the current browser.
 - About Daalaa provides a welcome screen, written Materials tutorials, and entry points into the existing reading and module wizards.
 - Activities preserves saved drafts and the draft form, with a guided-setup preview outlining format, context, and completion choices.
 - Results sketches live conversations and grade review, concept understanding, debate patterns, and AI usage. No student data or usage statistics are populated.
