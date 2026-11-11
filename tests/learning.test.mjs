@@ -66,4 +66,5 @@ test('goal-first material suggestions explain matches without requiring material
  assert.match(suggestions[0].reason,/research|customer|market/);
  assert.deepEqual(items[0].learningGoals,[]);
  assert.deepEqual(materialsForGoal(items,''),[]);
+ assert.deepEqual(materialsForGoal([{id:'swot',title:'SWOT practice',content:'Practice using SWOT to compare strengths and weaknesses.'}],'Solve differential equations using eigenvalues.'),[]);
 });
